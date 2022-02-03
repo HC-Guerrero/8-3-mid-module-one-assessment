@@ -26,7 +26,15 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  countSum = 0;
+
+  for(i = 0; i < animals.length; i++) {
+    countSum = countSum + animals[i].count;
+    
+  }
+  return countSum;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,7 +48,14 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  dummy = [];
+
+  for(i = 0; i < animals.length; i++) {
+    dummy.push(animals[i].kind);
+  }
+  return dummy;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -59,7 +74,16 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+  dummy = [];
+ 
+  for(i = 0; i < animals.length; i++) {
+    if(animals[i].count >= minimum)
+   
+    dummy.push(animals[i]);
+  }
+  return dummy;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -73,7 +97,25 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  count = 0;
+  kind = "";
+  common = {};
+
+  for ( i = 0; i < animals.length; i++) {     
+    if(animals[i].count > count) { 
+      count = animals[i].count; //// assigned the animal data type to accumulators I named count and kind respectively
+      kind = animals[i].kind;
+       common = {kind: animals[i].kind, count: animals[i].count} //manually assigned a new object with the values held in the accumulators.
+
+    }                                //Fairly certain there was a better way to do this but this is the best I could come up with.
+
+  else if (animals[i].length === [0]) {   /// I'm assuming that an empty input here is an empty array of objects, keeps returning an empty object though.
+    return null;
+  }
+}
+return common;  // had the function return the new object I made with the accumulators in it. 
+}
 
 // Do not change anything below this line.
 module.exports = {
